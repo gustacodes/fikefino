@@ -32,9 +32,14 @@ public class Aluno {
     @NotBlank
     private String senha;
     @NotBlank
+    private String usarname;
+    @NotBlank
+    private String cpf;
+    @NotBlank
     private int idade;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascimento;
     @NotBlank
     private Planos plano;
+
 }
