@@ -1,9 +1,9 @@
-package com.academia.fikefino.model;
+package com.academia.fikefino.enums;
 
 public enum Planos {
 
     DIAMANTE("DIAMANTE"),
-    OURO("OUTO"),
+    OURO("OURO"),
     PRATA("PRATA");
 
     private String planos;

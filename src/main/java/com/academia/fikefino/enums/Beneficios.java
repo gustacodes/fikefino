@@ -1,4 +1,4 @@
-package com.academia.fikefino.model;
+package com.academia.fikefino.enums;
 
 public enum Beneficios {
 
