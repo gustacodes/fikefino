@@ -1,8 +1,5 @@
 package com.academia.fikefino.model;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public enum Planos {
 
     DIAMANTE("DIAMANTE"),
