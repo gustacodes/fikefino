@@ -7,8 +7,7 @@ public enum Planos {
 
     DIAMANTE("DIAMANTE"),
     OURO("OUTO"),
-    PRATA("PRATA"),
-    BRONZE("BRONZE");
+    PRATA("PRATA");
 
     private String planos;
     Planos(String planos) {
