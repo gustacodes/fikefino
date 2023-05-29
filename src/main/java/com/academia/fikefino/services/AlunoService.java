@@ -18,7 +18,8 @@ public class AlunoService {
     @Autowired
     private AlunoRepository alunoRepository;
 
-    public Aluno save(Aluno aluno) {
+    public Planos tipoPlano(Aluno aluno) {
+
         Planos plano = aluno.getPlano();
 
         if(plano.getPlanos().equals("DIAMANTE")) {
@@ -34,6 +35,11 @@ public class AlunoService {
             aluno.setBeneficios(Beneficios.PRATA.getBeneficios());
         }
 
+        return plano;
+    }
+
+    public Aluno save(Aluno aluno) {
+        tipoPlano(aluno);
         return alunoRepository.save(aluno);
     }
 
@@ -58,6 +64,7 @@ public class AlunoService {
 
     public Aluno update(Long id, Aluno aluno) {
         aluno.setId(id);
+        tipoPlano(aluno);
         return alunoRepository.save(aluno);
     }
 }
