@@ -51,7 +51,6 @@ public class AlunoService {
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas");
         }
-
     }
 
     public List<Aluno> findAll() {
