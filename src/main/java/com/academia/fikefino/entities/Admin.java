@@ -26,5 +26,5 @@ public class Admin {
     private String email;
     @NotBlank
     private String senha;
-    
+
 }
