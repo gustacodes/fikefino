@@ -36,4 +36,10 @@ public class AlunoController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<Aluno> update(@PathVariable Long id, @RequestBody Aluno aluno) {
+        Aluno updateAluno = as.update(id, aluno);
+        return ResponseEntity.status(HttpStatus.OK).body(updateAluno);
+    }
+
 }

@@ -25,4 +25,8 @@ public class AlunoService {
         ar.deleteById(id);
     }
 
+    public Aluno update(Long id, Aluno aluno) {
+        aluno.setId(id);
+        return ar.save(aluno);
+    }
 }
