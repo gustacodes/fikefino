@@ -21,4 +21,8 @@ public class AlunoService {
         return ar.findAll();
     }
 
+    public void deleteById(Long id) {
+        ar.deleteById(id);
+    }
+
 }

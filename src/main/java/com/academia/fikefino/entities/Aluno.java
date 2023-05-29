@@ -4,6 +4,7 @@ import com.academia.fikefino.enums.Planos;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,11 +34,10 @@ public class Aluno {
     private String usarname;
     @NotBlank
     private String cpf;
-    @NotBlank
+    @NotNull
     private int idade;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascimento;
-    @NotBlank
     private Planos plano;
 
 }
