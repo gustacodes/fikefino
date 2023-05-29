@@ -1,5 +1,7 @@
 package com.academia.fikefino.entities;
 
+import com.academia.fikefino.enums.Beneficios;
+import com.academia.fikefino.enums.Mensalidade;
 import com.academia.fikefino.enums.Planos;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -38,6 +40,9 @@ public class Aluno {
     private int idade;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascimento;
+    @NotNull
     private Planos plano;
+    private Double mensalidade;
+    private String beneficios;
 
 }

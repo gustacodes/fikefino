@@ -1,6 +1,7 @@
 package com.academia.fikefino.controller;
 
 import com.academia.fikefino.entities.Aluno;
+import com.academia.fikefino.enums.Planos;
 import com.academia.fikefino.services.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
