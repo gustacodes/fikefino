@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js"></script>
+    <title>FikeFino - Cadastro</title>
+</head>
+<body>
+<div class="content">
+    <h1>Cadastre-se 🏋️‍♂️️</h1>
+    <form id="form" method="post">
+        <div>
+            <input name="nome" type="text" placeholder="Digite seu nome" class="inputs required" oninput="nameValidate()">
+            <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
+        </div>
+        <div>
+            <input name="email" type="email" placeholder="Digite seu email" class="inputs required" oninput="emailValidate()">
+            <span class="span-required">Digite um email válido</span>
+        </div>
+        <div>
+            <input name="cpf" type="text" placeholder="Digite seu CPF" class="inputs required" oninput="nameValidate()">
+            <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
+        </div>
+        <div>
+            <input name="usarname" type="email" placeholder="Digite seu nome de usuário" class="inputs required" oninput="emailValidate()">
+            <span class="span-required">Digite um email válido</span>
+        </div>
+        <div>
+            <input name="dataNascimento" type="date" placeholder="Digite seu nome" class="inputs required" oninput="nameValidate()">
+            <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
+        </div>
+        <div>
+            <input name="senha" type="password" placeholder="Senha" class="inputs required" oninput="mainPasswordValidate()">
+            <span class="span-required">Digite uma senha com no mínimo 8 caracteres</span>
+        </div>
+
+        <p>Plano:</p>
+        <div class="box-select">
+            <div>
+                <input type="radio" id="m" value="m" name="sexo">
+                <label for="m">DIAMANTE</label>
+            </div>
+            <div>
+                <input type="radio" id="f" value="f" name="sexo">
+                <label for="f">OURO</label>
+            </div>
+            <div>
+                <input type="radio" id="o" value="o" name="sexo">
+                <label for="o">PRATA</label>
+            </div>
+        </div>
+        <p>Saiba mais sobre nossos planos clicando <a href="#">aqui.</a></p>
+
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+</body>

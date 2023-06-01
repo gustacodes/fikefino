@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -23,9 +24,17 @@ public class AlunoController {
         return ResponseEntity.status(HttpStatus.OK).body(aluno);
     }
 
+    @GetMapping("/cadastro")
+    public ModelAndView aluno() {
+        ModelAndView mv = new ModelAndView("cadastro");
+        return mv;
+    }
+
     @PostMapping("/cadastro")
-    public ResponseEntity<Aluno> save(@RequestBody Aluno aluno) {
-        return ResponseEntity.status(HttpStatus.CREATED).body( alunoService.save(aluno));
+    public ModelAndView save(Aluno aluno) {
+        ModelAndView mv = new ModelAndView("cadastro");
+        alunoService.save(aluno);
+        return mv;
     }
 
     @DeleteMapping("/excluir/{id}")

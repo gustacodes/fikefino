@@ -36,8 +36,6 @@ public class Aluno {
     private String usarname;
     @NotBlank
     private String cpf;
-    @NotNull
-    private int idade;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascimento;
     @NotNull
