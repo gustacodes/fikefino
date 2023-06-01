@@ -39,7 +39,7 @@ public class AlunoController {
         String plano = alunoService.tipoPlano(opcaoSelecionada, aluno);
         aluno.setPlano(plano);
         alunoService.save(aluno);
-        return new RedirectView("/aluno/cadastro-aluno");
+        return new RedirectView("/aluno/todos-alunos");
     }
 
     @DeleteMapping("/excluir/{id}")

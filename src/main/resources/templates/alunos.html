@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/alunos.css">
     <script src="/script.js"></script>
     <title>FikeFino - Alunos</title>
 
@@ -12,14 +12,14 @@
 <body>
 
 <div class="content">
-    <h1>Matriculados️</h1>
-    <table th:each="aluno : ${alunos}">
+    <h1>Matriculados</h1>
+    <table>
         <thead>
         <tr>
             <th>NOME</th>
             <th>E-MAIL</th>
             <th>CPF</th>
-            <th>USARNAME</th>
+            <th>USERNAME</th>
             <th>DATA DE NASCIMENTO</th>
             <th>SENHA</th>
             <th>PLANO</th>
@@ -28,7 +28,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr th:each="aluno : ${alunos}">
             <td>[[${aluno.nome}]]</td>
             <td>[[${aluno.email}]]</td>
             <td>[[${aluno.cpf}]]</td>
@@ -42,6 +42,8 @@
 
         </tbody>
     </table>
-
+    <form th:action="@{/aluno/cadastro-aluno}" th:method="get">
+        <button type="submit">Cadastrar</button>
+    </form>
 </div>
 </body>
