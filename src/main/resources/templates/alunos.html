@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js"></script>
+    <title>FikeFino - Alunos</title>
+
+</head>
+<body>
+
+<div class="content">
+    <h1>Matriculados️</h1>
+    <table th:each="aluno : ${alunos}">
+        <thead>
+        <tr>
+            <th>NOME</th>
+            <th>E-MAIL</th>
+            <th>CPF</th>
+            <th>USARNAME</th>
+            <th>DATA DE NASCIMENTO</th>
+            <th>SENHA</th>
+            <th>PLANO</th>
+            <th>MENSALIDADE</th>
+            <th>BENEFÍCIO</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>[[${aluno.nome}]]</td>
+            <td>[[${aluno.email}]]</td>
+            <td>[[${aluno.cpf}]]</td>
+            <td>[[${aluno.usarname}]]</td>
+            <td>[[${aluno.dataNascimento}]]</td>
+            <td>[[${aluno.senha}]]</td>
+            <td>[[${aluno.plano}]]</td>
+            <td>R$ [[${aluno.mensalidade}]]</td>
+            <td>[[${aluno.beneficios}]]</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>
+</body>

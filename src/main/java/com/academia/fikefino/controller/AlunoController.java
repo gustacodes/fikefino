@@ -20,10 +20,12 @@ public class AlunoController {
     @Autowired
     private AlunoService alunoService;
 
-    @GetMapping
-    public ResponseEntity<List<Aluno>> findAll() {
+    @GetMapping("/todos-alunos")
+    public ModelAndView findAll() {
+        ModelAndView mv = new ModelAndView("alunos");
         List<Aluno> aluno = alunoService.findAll();
-        return ResponseEntity.status(HttpStatus.OK).body(aluno);
+        mv.addObject("alunos", aluno);
+        return mv;
     }
 
     @GetMapping("/cadastro-aluno")

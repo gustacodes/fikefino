@@ -7,6 +7,28 @@
     --color-purple2: indigo;
 }
 
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th {
+    color: black;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #9333FF;
+  }
+
+  tbody tr:hover {
+    background-color: indigo;
+  }
+
 *{
     margin: 0;
     padding: 0;

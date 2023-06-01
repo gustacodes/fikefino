@@ -19,6 +19,7 @@ public class AlunoService {
     @Autowired
     private AlunoRepository alunoRepository;
 
+    //Método de seleção do plano (Tipo, Mensalidade e Benefício)
     public String tipoPlano(String planoSelecionado, Aluno aluno) {
 
         if(planoSelecionado.equals("DIAMANTE")) {
