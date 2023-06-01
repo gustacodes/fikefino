@@ -19,28 +19,28 @@ public class AlunoService {
     @Autowired
     private AlunoRepository alunoRepository;
 
-    public Planos tipoPlano(Aluno aluno) {
+    public String tipoPlano(String planoSelecionado, Aluno aluno) {
 
-        Planos plano = aluno.getPlano();
-
-        if(plano.getPlanos().equals("DIAMANTE")) {
+        if(planoSelecionado.equals("DIAMANTE")) {
+            aluno.setPlano(planoSelecionado);
             aluno.setMensalidade(Mensalidade.DIAMANTE.getMensalidade());
             aluno.setBeneficios(Beneficios.DIAMANTE.getBeneficios());
 
-        } else if(plano.getPlanos().equals("OURO")) {
+        } else if(planoSelecionado.equals("OURO")) {
+            aluno.setPlano(planoSelecionado);
             aluno.setMensalidade(Mensalidade.OURO.getMensalidade());
             aluno.setBeneficios(Beneficios.OURO.getBeneficios());
 
-        } else if(plano.getPlanos().equals("PRATA")) {
+        } else if(planoSelecionado.equals("PRATA")) {
+            aluno.setPlano(planoSelecionado);
             aluno.setMensalidade(Mensalidade.PRATA.getMensalidade());
             aluno.setBeneficios(Beneficios.PRATA.getBeneficios());
         }
 
-        return plano;
+        return planoSelecionado;
     }
 
     public Aluno save(Aluno aluno) {
-        tipoPlano(aluno);
         return alunoRepository.save(aluno);
     }
 
@@ -65,7 +65,7 @@ public class AlunoService {
     @Transactional
     public Aluno update(Long id, Aluno aluno) {
         aluno.setId(id);
-        tipoPlano(aluno);
+        //tipoPlano(aluno);
         return alunoRepository.save(aluno);
     }
 }

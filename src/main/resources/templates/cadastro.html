@@ -11,7 +11,7 @@
 <body>
 <div class="content">
     <h1>Cadastre-se 🏋️‍♂️️</h1>
-    <form id="form" method="post">
+    <form action="/aluno/cadastro-aluno" id="form" method="post">
         <div>
             <input name="nome" type="text" placeholder="Digite seu nome" class="inputs required" oninput="nameValidate()">
             <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
@@ -40,15 +40,15 @@
         <p>Plano:</p>
         <div class="box-select">
             <div>
-                <input type="radio" id="m" value="m" name="sexo">
+                <input type="radio" id="m" value="DIAMANTE" name="opcao">
                 <label for="m">DIAMANTE</label>
             </div>
             <div>
-                <input type="radio" id="f" value="f" name="sexo">
+                <input type="radio" id="f" value="OURO" name="opcao">
                 <label for="f">OURO</label>
             </div>
             <div>
-                <input type="radio" id="o" value="o" name="sexo">
+                <input type="radio" id="o" value="PRATA" name="opcao">
                 <label for="o">PRATA</label>
             </div>
         </div>

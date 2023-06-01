@@ -39,7 +39,7 @@ public class Aluno {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascimento;
     @NotNull
-    private Planos plano;
+    private String plano;
     private Double mensalidade;
     private String beneficios;
 
