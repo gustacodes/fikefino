@@ -28,13 +28,13 @@ public class AlunoController {
         return mv;
     }
 
-    @GetMapping("/cadastro-aluno")
+    @GetMapping
     public ModelAndView save() {
         ModelAndView mv = new ModelAndView("cadastro");
         return mv;
     }
 
-    @PostMapping("/cadastro-aluno")
+    @PostMapping
     public RedirectView save(@RequestParam("opcao") String opcaoSelecionada, Aluno aluno) {
         String plano = alunoService.tipoPlano(opcaoSelecionada, aluno);
         aluno.setPlano(plano);
@@ -42,13 +42,13 @@ public class AlunoController {
         return new RedirectView("/aluno/todos-alunos");
     }
 
-    @DeleteMapping("/excluir/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         alunoService.deleteById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Aluno> update(@PathVariable Long id, @RequestBody Aluno aluno) {
         Aluno updateAluno = alunoService.update(id, aluno);
         return ResponseEntity.status(HttpStatus.OK).body(updateAluno);
