@@ -22,7 +22,25 @@ public class AlunoService {
     //Método de seleção do plano (Tipo, Mensalidade e Benefício)
     public String tipoPlano(String planoSelecionado, Aluno aluno) {
 
-        if(planoSelecionado.equals("DIAMANTE")) {
+        switch(planoSelecionado) {
+            case "DIAMANTE":
+                aluno.setPlano(planoSelecionado);
+                aluno.setMensalidade(Mensalidade.DIAMANTE.getMensalidade());
+                aluno.setBeneficios(Beneficios.DIAMANTE.getBeneficios());
+                break;
+            case "OURO":
+                aluno.setPlano(planoSelecionado);
+                aluno.setMensalidade(Mensalidade.OURO.getMensalidade());
+                aluno.setBeneficios(Beneficios.OURO.getBeneficios());
+                break;
+            case "PRATA":
+                aluno.setPlano(planoSelecionado);
+                aluno.setMensalidade(Mensalidade.PRATA.getMensalidade());
+                aluno.setBeneficios(Beneficios.PRATA.getBeneficios());
+                break;
+        }
+
+        /*if(planoSelecionado.equals("DIAMANTE")) {
             aluno.setPlano(planoSelecionado);
             aluno.setMensalidade(Mensalidade.DIAMANTE.getMensalidade());
             aluno.setBeneficios(Beneficios.DIAMANTE.getBeneficios());
@@ -36,7 +54,7 @@ public class AlunoService {
             aluno.setPlano(planoSelecionado);
             aluno.setMensalidade(Mensalidade.PRATA.getMensalidade());
             aluno.setBeneficios(Beneficios.PRATA.getBeneficios());
-        }
+        }*/
 
         return planoSelecionado;
     }
