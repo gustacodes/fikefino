@@ -36,10 +36,6 @@ public class AdminService implements UserDetailsService {
         if (usuario == null) {
             throw new UsernameNotFoundException("Usuário não encontrado");
 
-        } return new User(
-                admin.getUsuario(),
-                admin.getSenha(),
-                Collections.emptyList()
-        );
+        } return admin;
     }
 }

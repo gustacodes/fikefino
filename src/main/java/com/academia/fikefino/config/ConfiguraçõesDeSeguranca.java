@@ -13,7 +13,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class ConfiguraçõesDeSeguranca {
 
-    @Autowired
     private AdminService adminService;
 
     @Bean
@@ -28,9 +27,9 @@ public class ConfiguraçõesDeSeguranca {
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-                .requestMatchers("/login/**")
-                .permitAll()
                 .requestMatchers("/admin/**")
+                .permitAll()
+                .requestMatchers("/usuarios/**")
                 .hasRole("ADMIN")
                 //.hasAnyRole("ADMIN", "USER")
                 .anyRequest()
