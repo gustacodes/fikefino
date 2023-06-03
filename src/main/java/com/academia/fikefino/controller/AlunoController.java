@@ -43,7 +43,7 @@ public class AlunoController {
     }
 
     @DeleteMapping("/{id}")
-    public RedirectView deleteById(@PathVariable("id") Long id) {
+    public RedirectView deleteById(@PathVariable Long id) {
         alunoService.deleteById(id);
         return new RedirectView("/aluno/todos-alunos");
     }

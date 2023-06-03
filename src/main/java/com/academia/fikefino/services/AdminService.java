@@ -20,4 +20,8 @@ public class AdminService {
     public List<Admin> findAll() {
         return adminRepository.findAll();
     }
+
+    public void deleteById(Long id) {
+        adminRepository.deleteById(id);
+    }
 }
