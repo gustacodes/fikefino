@@ -39,10 +39,13 @@
             <td>[[${aluno.plano}]]</td>
             <td>R$ [[${aluno.mensalidade}]]</td>
             <td>[[${aluno.beneficios}]]</td>
-            <td><form  th:action="@{/aluno/{id}(id=${aluno.id})}" th:method="delete" >
-                <input type="hidden" name="_method" value="delete"/>
-                <button type="submit" id="submitButton">🗑</button>
-            </form></td>
+            <td><form th:action="@{/aluno/{id}(id=${aluno.id})}" th:method="delete">
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit" id="submitButton" style="border: none; background: none; padding: 0;">
+                    <img src="/img/excluir.png" alt="Deletar" />
+                </button>
+            </form>
+
         </tr>
 
         </tbody>
