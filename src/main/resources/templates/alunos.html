@@ -25,6 +25,7 @@
             <th>PLANO</th>
             <th>MENSALIDADE</th>
             <th>BENEFÍCIO</th>
+            <th>AÇÕES</th>
         </tr>
         </thead>
         <tbody>
@@ -38,11 +39,15 @@
             <td>[[${aluno.plano}]]</td>
             <td>R$ [[${aluno.mensalidade}]]</td>
             <td>[[${aluno.beneficios}]]</td>
+            <td><form  th:action="@{/aluno/{id}(id=${aluno.id})}" th:method="delete" >
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit" id="submitButton">Remover</button>
+            </form></td>
         </tr>
 
         </tbody>
     </table>
-    <form th:action="@{/aluno/cadastro-aluno}" th:method="get">
+    <form th:action="@{/aluno}" th:method="get">
         <button type="submit">Cadastrar</button>
     </form>
 </div>

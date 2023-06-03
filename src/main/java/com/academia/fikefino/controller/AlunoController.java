@@ -1,5 +1,6 @@
 package com.academia.fikefino.controller;
 
+import ch.qos.logback.core.model.Model;
 import com.academia.fikefino.entities.Aluno;
 import com.academia.fikefino.enums.Planos;
 import com.academia.fikefino.services.AlunoService;
@@ -43,9 +44,9 @@ public class AlunoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+    public RedirectView deleteById(@PathVariable("id") Long id) {
         alunoService.deleteById(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return new RedirectView("/aluno/todos-alunos");
     }
 
     @PutMapping("/{id}")

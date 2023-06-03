@@ -40,22 +40,6 @@ public class AlunoService {
                 break;
         }
 
-        /*if(planoSelecionado.equals("DIAMANTE")) {
-            aluno.setPlano(planoSelecionado);
-            aluno.setMensalidade(Mensalidade.DIAMANTE.getMensalidade());
-            aluno.setBeneficios(Beneficios.DIAMANTE.getBeneficios());
-
-        } else if(planoSelecionado.equals("OURO")) {
-            aluno.setPlano(planoSelecionado);
-            aluno.setMensalidade(Mensalidade.OURO.getMensalidade());
-            aluno.setBeneficios(Beneficios.OURO.getBeneficios());
-
-        } else if(planoSelecionado.equals("PRATA")) {
-            aluno.setPlano(planoSelecionado);
-            aluno.setMensalidade(Mensalidade.PRATA.getMensalidade());
-            aluno.setBeneficios(Beneficios.PRATA.getBeneficios());
-        }*/
-
         return planoSelecionado;
     }
 
