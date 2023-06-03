@@ -40,7 +40,7 @@
             <td>R$ [[${aluno.mensalidade}]]</td>
             <td>[[${aluno.beneficios}]]</td>
             <td><form  th:action="@{/aluno/{id}(id=${aluno.id})}" th:method="delete" >
-                <input type="hidden" name="_method" value="delete" />
+                <input type="hidden" name="_method" value="delete"/>
                 <button type="submit" id="submitButton">🗑</button>
             </form></td>
         </tr>

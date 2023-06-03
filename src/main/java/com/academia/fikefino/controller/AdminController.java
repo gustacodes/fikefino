@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -21,14 +23,23 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @PostMapping("/cadastro")
-    public ResponseEntity<Admin> save(@RequestBody Admin admin) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(adminService.save(admin));
+    @GetMapping
+    public ModelAndView admin() {
+        ModelAndView mv = new ModelAndView("admin");
+        return mv;
     }
 
-    @GetMapping("/todos-admin")
-    public ResponseEntity<List<Admin>> findAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(adminService.findAll());
+    @PostMapping
+    public RedirectView save(Admin admin) {
+        adminService.save(admin);
+        return new RedirectView("/admin/usuarios");
+    }
+
+    @GetMapping("/usuarios")
+    public ModelAndView findAll() {
+        ModelAndView mv = new ModelAndView("usuarios");
+        mv.addObject("usuarios", adminService.findAll());
+        return mv;
     }
 
 }

@@ -1,6 +1,5 @@
 package com.academia.fikefino.controller;
 
-import ch.qos.logback.core.model.Model;
 import com.academia.fikefino.entities.Aluno;
 import com.academia.fikefino.enums.Planos;
 import com.academia.fikefino.services.AlunoService;
