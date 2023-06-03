@@ -20,7 +20,7 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @GetMapping
+    @GetMapping("/cadastro")
     public ModelAndView admin() {
         ModelAndView mv = new ModelAndView("admin");
         return mv;
