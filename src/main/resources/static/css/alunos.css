@@ -22,7 +22,7 @@
   }
 
   th {
-    background-color: #9333FF;
+    background-color: #828282;
   }
 
   tbody tr:hover {
@@ -69,6 +69,12 @@ h1{
     margin: 3px 0 0 1px;
     color: var(--color-red);
     display: none;
+}
+
+.inputs, #submitButton {
+    background-color: red;
+    width: 80%;
+    border-radius: 100px;
 }
 
 .inputs{
