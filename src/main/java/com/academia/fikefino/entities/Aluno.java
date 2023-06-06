@@ -1,8 +1,5 @@
 package com.academia.fikefino.entities;
 
-import com.academia.fikefino.enums.Beneficios;
-import com.academia.fikefino.enums.Mensalidade;
-import com.academia.fikefino.enums.Planos;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -14,6 +11,8 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_aluno")
@@ -39,7 +38,9 @@ public class Aluno {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascimento;
     @NotNull
-    private String plano;
+    @ManyToMany
+    @JoinTable
+    private List<Planos> plano;
     private Double mensalidade;
     private String beneficios;
 
