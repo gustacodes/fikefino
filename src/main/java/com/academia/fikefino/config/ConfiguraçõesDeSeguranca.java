@@ -4,16 +4,16 @@ import com.academia.fikefino.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-//import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//import org.springframework.security.crypto.password.PasswordEncoder;
-//import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class ConfiguraçõesDeSeguranca {
 
-    /*private AdminService adminService;
+    private AdminService adminService;
 
     @Bean
     public PasswordEncoder encoder() {
@@ -26,18 +26,7 @@ public class ConfiguraçõesDeSeguranca {
 
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests()
-                .requestMatchers("/admin/**")
-                .permitAll()
-                .requestMatchers("/usuarios/**")
-                .hasRole("ADMIN")
-                //.hasAnyRole("ADMIN", "USER")
-                .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin()
-                .and()
-                .httpBasic();
+
         return http.build();
-    }*/
+    }
 }

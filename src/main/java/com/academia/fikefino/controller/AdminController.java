@@ -26,16 +26,16 @@ public class AdminController {
         return mv;
     }
 
+    @PostMapping("/cadastro")
+    public RedirectView save(Admin admin) {
+        adminService.save(admin);
+        return new RedirectView("/admin/usuarios");
+    }
+
     @GetMapping("/login")
     public ModelAndView login() {
         ModelAndView mv = new ModelAndView("login");
         return mv;
-    }
-
-    @PostMapping
-    public RedirectView save(Admin admin) {
-        adminService.save(admin);
-        return new RedirectView("/admin/usuarios");
     }
 
     @GetMapping("/usuarios")
