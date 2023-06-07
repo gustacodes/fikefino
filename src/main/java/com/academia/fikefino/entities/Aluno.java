@@ -1,5 +1,6 @@
 package com.academia.fikefino.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -35,11 +37,13 @@ public class Aluno {
     private String usarname;
     @NotBlank
     private String cpf;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dataNascimento;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataNascimento;
     @ManyToOne
     @JoinColumn(name = "plano_id")
     private Planos plano;
+    @NotBlank
+    private String meuPlano;
     private Double mensalidade;
     private String beneficios;
 

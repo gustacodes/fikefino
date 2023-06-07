@@ -48,6 +48,7 @@ public class AlunoController {
         meuPlano.setPlano(opcaoSelecionada);
         planosRepository.save(meuPlano);
         Aluno plano = alunoService.tipoPlano(opcaoSelecionada, meuPlano.getId(), aluno);
+
         return new RedirectView("/aluno/todos-alunos");
     }
 

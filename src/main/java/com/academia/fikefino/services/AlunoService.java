@@ -31,12 +31,26 @@ public class AlunoService {
 
         Optional<Planos> meuPlano = planosRepository.findById(id);
 
-        if(meuPlano.isPresent()) {
+        if(meuPlano.isPresent() && meuPlano.get().getPlano().equals("DIAMANTE")) {
             Planos planoEscolhido = meuPlano.get();
             aluno.setPlano(planoEscolhido);
+            aluno.setMeuPlano(meuPlano.get().getPlano());
             aluno.setMensalidade(Mensalidade.DIAMANTE.getMensalidade());
             aluno.setBeneficios(Beneficios.DIAMANTE.getBeneficios());
 
+        } else if(meuPlano.isPresent() && meuPlano.get().getPlano().equals("OURO")) {
+            Planos planoEscolhido = meuPlano.get();
+            aluno.setPlano(planoEscolhido);
+            aluno.setMeuPlano(meuPlano.get().getPlano());
+            aluno.setMensalidade(Mensalidade.OURO.getMensalidade());
+            aluno.setBeneficios(Beneficios.OURO.getBeneficios());
+
+        } else if(meuPlano.isPresent() && meuPlano.get().getPlano().equals("PRATA")) {
+            Planos planoEscolhido = meuPlano.get();
+            aluno.setPlano(planoEscolhido);
+            aluno.setMeuPlano(meuPlano.get().getPlano());
+            aluno.setMensalidade(Mensalidade.PRATA.getMensalidade());
+            aluno.setBeneficios(Beneficios.PRATA.getBeneficios());
         } else {
 
             throw new IllegalArgumentException("Plano não encontrado");
