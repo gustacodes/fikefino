@@ -44,26 +44,10 @@ public class AlunoController {
     @PostMapping
     public RedirectView save(@RequestParam("opcao") String opcaoSelecionada, Aluno aluno) {
 
-        var p = new Planos();
-
-        if(opcaoSelecionada.equalsIgnoreCase(p.getDiamante())) {
-            p.setDiamante(opcaoSelecionada);
-            aluno.setMensalidade(Mensalidade.DIAMANTE.getMensalidade());
-            aluno.setBeneficios(Beneficios.DIAMANTE.getBeneficios());
-        } else if(opcaoSelecionada.equalsIgnoreCase(p.getOuro())) {
-            p.setOuro(opcaoSelecionada);
-            aluno.setMensalidade(Mensalidade.OURO.getMensalidade());
-            aluno.setBeneficios(Beneficios.OURO.getBeneficios());
-        } else {
-            p.setPrata(opcaoSelecionada);
-            aluno.setMensalidade(Mensalidade.PRATA.getMensalidade());
-            aluno.setBeneficios(Beneficios.PRATA.getBeneficios());
-        }
-
-        Aluno plano = alunoService.tipoPlano(p, aluno);
-        planosRepository.save(p);
-        alunoService.save(aluno);
-
+        var meuPlano = new Planos();
+        meuPlano.setPlano(opcaoSelecionada);
+        planosRepository.save(meuPlano);
+        Aluno plano = alunoService.tipoPlano(opcaoSelecionada, meuPlano.getId(), aluno);
         return new RedirectView("/aluno/todos-alunos");
     }
 

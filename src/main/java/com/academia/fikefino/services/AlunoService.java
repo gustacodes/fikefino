@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AlunoService {
@@ -26,13 +27,22 @@ public class AlunoService {
     private PlanosRepository planosRepository;
 
     //Método de seleção do plano (Tipo, Mensalidade e Benefício)
-    public Aluno tipoPlano(Planos planoSelecionado, Aluno aluno) {
+    public Aluno tipoPlano(String planoSelecionado, Long id, Aluno aluno) {
 
-        List<Planos> meuPlano = new ArrayList<>();
-        meuPlano.add(planoSelecionado);
-        aluno.setPlano(Collections.singletonList(meuPlano.get(0)));
+        Optional<Planos> meuPlano = planosRepository.findById(id);
 
-        return aluno;
+        if(meuPlano.isPresent()) {
+            Planos planoEscolhido = meuPlano.get();
+            aluno.setPlano(planoEscolhido);
+            aluno.setMensalidade(Mensalidade.DIAMANTE.getMensalidade());
+            aluno.setBeneficios(Beneficios.DIAMANTE.getBeneficios());
+
+        } else {
+
+            throw new IllegalArgumentException("Plano não encontrado");
+        }
+
+        return alunoRepository.save(aluno);
     }
 
     public List<Aluno> findAll() {

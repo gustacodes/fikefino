@@ -37,10 +37,9 @@ public class Aluno {
     private String cpf;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascimento;
-    @NotNull
-    @ManyToMany
-    @JoinTable
-    private List<Planos> plano;
+    @ManyToOne
+    @JoinColumn(name = "plano_id")
+    private Planos plano;
     private Double mensalidade;
     private String beneficios;
 

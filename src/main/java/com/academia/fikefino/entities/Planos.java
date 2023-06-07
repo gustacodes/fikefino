@@ -22,13 +22,6 @@ public class Planos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
-    private String diamante = "DIAMANTE";
-    @NotNull
-    private String ouro = "OURO";
-    @NotNull
-    private String prata = "PRATA";
-    @ManyToMany(mappedBy = "plano")
-    private Set<Aluno> aluno;
+    private String plano;
 
 }
