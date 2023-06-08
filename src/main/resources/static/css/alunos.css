@@ -17,12 +17,13 @@
     width: 100%;
     border-collapse: collapse;
   }
+
   th {
     color: white;
   }
 
   th, td {
-    padding: 8px;
+    padding: 1px;
     text-align: left;
     border-bottom: 1px solid #ddd;
   }

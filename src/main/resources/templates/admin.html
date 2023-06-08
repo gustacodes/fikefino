@@ -29,8 +29,9 @@
         </div>
 
         <div>
-            <select name="papeis" th:field="*{papeis}">
-                <option th:each="papel : ${papeis}" th:value="${papel.nome}" th:text="${papel.nome}"></option>
+            <select name="papeis" >
+                <option>ADMIN</option>
+                <option>USER</option>
             </select>
         </div>
 

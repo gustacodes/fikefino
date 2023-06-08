@@ -3,7 +3,6 @@ package com.academia.fikefino.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Set;
 
@@ -11,7 +10,7 @@ import java.util.Set;
 @Table(name = "tb_papeis")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Papeis implements GrantedAuthority {
+public class Papeis {
 
     @Id
     private String nome;
@@ -22,10 +21,6 @@ public class Papeis implements GrantedAuthority {
         this.nome = nome;
     }
 
-    @Override
-    public String getAuthority() {
-        return nome;
-    }
 
     public String getNome() {
         return nome;
