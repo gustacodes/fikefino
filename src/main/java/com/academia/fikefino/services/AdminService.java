@@ -12,10 +12,14 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-public class AdminService implements UserDetailsService {
+public class AdminService {
 
     @Autowired
     private AdminRepository adminRepository;
+
+    public Admin findByUsuario(String usuario) {
+        return adminRepository.findByUsuario(usuario);
+    }
 
     public Admin save(Admin admin) {
         return adminRepository.save(admin);
@@ -27,14 +31,5 @@ public class AdminService implements UserDetailsService {
 
     public void deleteById(Long id) {
         adminRepository.deleteById(id);
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String usuario) throws UsernameNotFoundException {
-        Admin admin = adminRepository.findByUsuario(usuario);
-        if (usuario == null) {
-            throw new UsernameNotFoundException("Usuário não encontrado");
-
-        } return admin;
     }
 }

@@ -6,20 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
     <script src="/script.js"></script>
-    <title>FikeFino - Cadastro</title>
+    <title>FikeFino - Login</title>
 </head>
 <body>
 <div class="content">
     <h1>Logar <img src="/img/perfil.png"></h1>
-    <form action="/aluno" id="form" method="post">
+    <form th:action="@{/admin/login}" id="form" method="post">
         <div>
             <img src="/img/email.png">
-            <input name="nome" type="text" placeholder="Usuário" class="inputs required" oninput="nameValidate()">
+            <input name="usuario" type="text" placeholder="Usuário" class="inputs required" oninput="nameValidate()">
             <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
         </div>
         <div>
             <img class="pass" src="/img/senha.png">
-            <input name="email" type="email" placeholder="Senha" class="inputs required" oninput="emailValidate()">
+            <input name="senha" type="text" placeholder="Senha" class="inputs required" oninput="emailValidate()">
             <span class="span-required">Digite um email válido</span>
         </div>
 
