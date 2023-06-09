@@ -1,11 +1,9 @@
 package com.academia.fikefino.controller;
 
-import com.academia.fikefino.entities.Admin;
-import com.academia.fikefino.entities.Papeis;
+import com.academia.fikefino.entities.Usuario;
 import com.academia.fikefino.repositories.PapeisRespository;
-import com.academia.fikefino.services.AdminService;
+import com.academia.fikefino.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,10 +11,10 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/admin")
-public class AdminController {
+public class UsuarioController {
 
     @Autowired
-    private AdminService adminService;
+    private UsuarioService adminService;
 
     @Autowired
     private PapeisRespository papeisRespository;
@@ -28,7 +26,7 @@ public class AdminController {
     }
 
     @PostMapping("/cadastro")
-    public RedirectView save(Admin admin) {
+    public RedirectView save(Usuario admin) {
         adminService.save(admin);
         return new RedirectView("/admin/usuarios");
     }

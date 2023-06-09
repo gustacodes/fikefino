@@ -15,7 +15,7 @@ public class Papeis {
     @Id
     private String nome;
     @ManyToMany(mappedBy = "papeis")
-    private Set<Admin> admins;
+    private Set<Usuario> admins;
 
     public Papeis(String nome) {
         this.nome = nome;
@@ -30,11 +30,11 @@ public class Papeis {
         this.nome = nome;
     }
 
-    public Set<Admin> getAdmins() {
+    public Set<Usuario> getAdmins() {
         return admins;
     }
 
-    public void setAdmins(Set<Admin> admins) {
+    public void setAdmins(Set<Usuario> admins) {
         this.admins = admins;
     }
 }
