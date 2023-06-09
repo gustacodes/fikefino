@@ -40,9 +40,14 @@ public class UsuarioController {
     }
 
     @GetMapping("/login")
-    public ModelAndView login() {
-        ModelAndView mv = new ModelAndView("login");
-        return mv;
+    public String login() {
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestParam("email") String email) {
+        UserDetails userDetails = usuarioService.loadUserByUsername(email);
+        return "funcionarios"; // Retorne o nome do template para exibir após o login
     }
 
     @GetMapping("/funcionarios")

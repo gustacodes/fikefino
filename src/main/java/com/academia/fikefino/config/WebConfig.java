@@ -16,6 +16,7 @@ import static org.springframework.transaction.TransactionDefinition.withDefaults
 @Configuration
 public class WebConfig {
 
+    @Autowired
     private UsuarioService usuarioService;
 
     @Bean
