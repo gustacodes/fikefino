@@ -11,15 +11,15 @@
 <body>
 <div class="content">
     <h1>Logar <img src="/img/perfil.png"></h1>
-    <form th:action="@{/admin/login}" id="form" method="post">
+    <form th:action="@{/admin/login}" id="form" th:method="post" th:object="${usuario}">
         <div>
             <img src="/img/email.png">
-            <input name="usuario" type="text" placeholder="Usuário" class="inputs required" oninput="nameValidate()">
+            <input name="email" type="text" placeholder="Usuário" class="inputs required" oninput="nameValidate()">
             <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
         </div>
         <div>
             <img class="pass" src="/img/senha.png">
-            <input name="senha" type="text" placeholder="Senha" class="inputs required" oninput="emailValidate()">
+            <input name="senha" type="password" placeholder="Senha" class="inputs required" oninput="emailValidate()">
             <span class="span-required">Digite um email válido</span>
         </div>
 

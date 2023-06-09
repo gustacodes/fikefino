@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -15,7 +16,6 @@ import static org.springframework.transaction.TransactionDefinition.withDefaults
 @Configuration
 public class WebConfig {
 
-    @Autowired
     private UsuarioService usuarioService;
 
     @Bean
@@ -30,14 +30,14 @@ public class WebConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-        .requestMatchers("/css/**").permitAll()
-        .requestMatchers("/img/**").permitAll()
-        .anyRequest().authenticated();
+            .requestMatchers("/css/**", "/img/**", "/admin/cadastro").permitAll()
+            .anyRequest().authenticated()
+            .and()
+            .formLogin()
+            .loginPage("/admin/login")
+            .defaultSuccessUrl("/aluno/todos-alunos")
+            .permitAll();
 
-        http.formLogin()
-        .loginPage("/admin/login")
-        .defaultSuccessUrl("/aluno/todos-alunos")
-        .permitAll();
         return http.build();
     }
 

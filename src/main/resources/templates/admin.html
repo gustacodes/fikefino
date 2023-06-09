@@ -11,10 +11,10 @@
 <body>
 <div class="content">
     <h1>Cadastro de Usuários</h1>
-    <form th:action="@{/admin/cadastro}" th:method="post" th:object="${admin}">
+    <form th:action="@{/admin/cadastro}" th:method="post" th:object="${usuario}">
 
         <div>
-            <input name="usuario" type="text" placeholder="Nome de usuário" class="inputs required" oninput="emailValidate()">
+            <input name="user" type="text" placeholder="Nome de usuário" class="inputs required" oninput="emailValidate()">
             <span class="span-required">Digite um email válido</span>
         </div>
 
@@ -29,7 +29,7 @@
         </div>
 
         <div>
-            <select name="papeis" >
+            <select>
                 <option>ADMIN</option>
                 <option>USER</option>
             </select>
