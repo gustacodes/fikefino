@@ -33,7 +33,7 @@ public class UsuarioController {
 
     @GetMapping("/login")
     public ModelAndView login() {
-        ModelAndView mv = new ModelAndView("funcionarios");
+        ModelAndView mv = new ModelAndView("login");
         return mv;
     }
 

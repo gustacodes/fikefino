@@ -33,6 +33,11 @@ public class WebConfig {
         .requestMatchers("/css/**").permitAll()
         .requestMatchers("/img/**").permitAll()
         .anyRequest().authenticated();
+
+        http.formLogin()
+        .loginPage("/admin/login")
+        .defaultSuccessUrl("/aluno/todos-alunos")
+        .permitAll();
         return http.build();
     }
 
