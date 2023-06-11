@@ -13,16 +13,12 @@ import java.util.List;
 
 @Service
 @EnableWebSecurity
-public class UsuarioService implements UserDetailsService {
+public class UsuarioService {
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario u = usuarioRepository.findByEmail(username).orElseThrow( () -> new UsernameNotFoundException("Usuário não foi encontrado na base de dados"));
-
-        return u;
+    public UsuarioService(UsuarioRepository usuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
     }
 
     public Usuario save(Usuario user) {

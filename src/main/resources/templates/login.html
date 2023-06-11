@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
-    <script src="/script.js"></script>
     <title>FikeFino - Login</title>
 </head>
 <body>
@@ -14,12 +13,12 @@
     <form th:action="@{/admin/login}" id="form" th:method="post" th:object="${usuario}">
         <div>
             <img src="/img/email.png">
-            <input name="email" type="text" placeholder="Usuário" class="inputs required" oninput="nameValidate()">
+            <input name="username" type="text" placeholder="Usuário" class="inputs required">
             <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
         </div>
         <div>
             <img class="pass" src="/img/senha.png">
-            <input name="senha" type="password" placeholder="Senha" class="inputs required" oninput="emailValidate()">
+            <input name="password" type="password" placeholder="Senha" class="inputs required" >
             <span class="span-required">Digite um email válido</span>
         </div>
 

@@ -24,9 +24,8 @@
         </thead>
         <tbody>
         <tr th:each="user : ${usuarios}">
-            <td>[[${user.usuario}]]</td>
-            <td>[[${user.email}]]</td>
-            <td>[[${user.senha}]]</td>
+            <td>[[${user.user}]]</td>
+            <td>[[${user.pass}]]</td>
             <td><form th:action="@{/admin/{id}(id=${user.id})}" th:method="delete">
                 <input type="hidden" name="_method" value="delete" />
                 <button type="submit" id="submitButton" style="border: none; background: none; padding: 0;">

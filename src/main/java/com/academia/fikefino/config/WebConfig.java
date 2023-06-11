@@ -1,5 +1,6 @@
 package com.academia.fikefino.config;
 
+import com.academia.fikefino.services.UserDetailService;
 import com.academia.fikefino.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,13 +12,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static org.springframework.transaction.TransactionDefinition.withDefaults;
-
 @Configuration
 public class WebConfig {
 
-    @Autowired
-    private UsuarioService usuarioService;
+    private final UserDetailService userDetailService;
+
+    public WebConfig(UserDetailService userDetailService) {
+        this.userDetailService = userDetailService;
+    }
 
     @Bean
     public PasswordEncoder encoder() {
@@ -25,7 +27,7 @@ public class WebConfig {
     }
 
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(usuarioService).passwordEncoder(encoder());
+        auth.userDetailsService(userDetailService).passwordEncoder(encoder());
     }
 
     @Bean

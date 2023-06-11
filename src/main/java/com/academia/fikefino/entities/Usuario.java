@@ -3,9 +3,7 @@ package com.academia.fikefino.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,10 +23,7 @@ public class Usuario implements UserDetails {
     @NotBlank
     private String user;
     @NotBlank
-    @Email
-    private String email;
-    @NotBlank
-    private String senha;
+    private String pass;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable
     private List<Papeis> papeis;
@@ -40,12 +35,12 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getPassword() {
-        return senha;
+        return pass;
     }
 
     @Override
     public String getUsername() {
-        return email;
+        return user;
     }
 
     @Override

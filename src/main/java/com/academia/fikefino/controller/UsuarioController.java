@@ -4,11 +4,8 @@ import com.academia.fikefino.entities.Usuario;
 import com.academia.fikefino.repositories.PapeisRespository;
 import com.academia.fikefino.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -34,7 +31,7 @@ public class UsuarioController {
 
     @PostMapping("/cadastro")
     public RedirectView save(Usuario user) {
-        user.setSenha(encoder.encode(user.getSenha()));
+        user.setPass(encoder.encode(user.getPassword()));
         usuarioService.save(user);
         return new RedirectView("/admin/funcionarios");
     }
@@ -42,12 +39,6 @@ public class UsuarioController {
     @GetMapping("/login")
     public String login() {
         return "login";
-    }
-
-    @PostMapping("/login")
-    public String login(@RequestParam("email") String email) {
-        UserDetails userDetails = usuarioService.loadUserByUsername(email);
-        return "funcionarios"; // Retorne o nome do template para exibir após o login
     }
 
     @GetMapping("/funcionarios")
