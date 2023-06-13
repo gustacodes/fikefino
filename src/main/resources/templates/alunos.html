@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/alunos.css">
-    <script src="/script.js"></script>
     <title>FikeFino - Alunos</title>
 
 </head>
@@ -25,7 +24,6 @@
             <th>PLANO</th>
             <th>MENSALIDADE</th>
             <th>BENEFÍCIO</th>
-            <th>AÇÕES</th>
         </tr>
         </thead>
         <tbody>
@@ -39,13 +37,25 @@
             <td>[[${aluno.meuPlano}]]</td>
             <td>R$ [[${aluno.mensalidade}]]</td>
             <td>[[${aluno.beneficios}]]</td>
+            <td colspan="2">
             <td><form th:action="@{/aluno/{id}(id=${aluno.id})}" th:method="delete">
                 <input type="hidden" name="_method" value="delete" />
                 <button type="submit" id="submitButton" style="border: none; background: none; padding: 0;">
-                    <img src="/img/excluir.png" alt="Deletar" />
+                    <img src="/img/deletar-conta.png" alt="Deletar" />
                 </button>
             </form>
             </td>
+            <td>
+                <form th:action="@{/aluno/{id}(id=${aluno.id})}" th:method="put" th:object="${aluno}">
+                    <input type="hidden" name="_method" value="put" />
+                    <button type="submit" id="submitButton" style="border: none; background: none; padding: 0;">
+                        <img src="/img/em-processamento.png" alt="Atualizar" />
+                    </button>
+                </form>
+            </td>
+
+            </td>
+
 
         </tr>
 

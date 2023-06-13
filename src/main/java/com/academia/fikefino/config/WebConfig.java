@@ -34,6 +34,8 @@ public class WebConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
             .requestMatchers("/css/**", "/img/**", "/admin/cadastro").permitAll()
+            .requestMatchers("/admin/funcionarios")
+            .hasAuthority("ADMIN")
             .anyRequest().authenticated()
             .and()
             .formLogin()

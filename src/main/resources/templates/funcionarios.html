@@ -12,12 +12,11 @@
 <body>
 
 <div class="content">
-    <h1>Usuários</h1>
+    <h1>Funcionários</h1>
     <table>
         <thead>
         <tr>
             <th>USERNAME</th>
-            <th>E-MAIL</th>
             <th>SENHA</th>
             <th>AÇÕES</th>
         </tr>
@@ -26,7 +25,7 @@
         <tr th:each="user : ${usuarios}">
             <td>[[${user.user}]]</td>
             <td>[[${user.pass}]]</td>
-            <td><form th:action="@{/admin/{id}(id=${user.id})}" th:method="delete">
+            <td><form th:action="@{/admin/{id}(id=${user.id})}" th:method="delete" th:object="${usuario}">
                 <input type="hidden" name="_method" value="delete" />
                 <button type="submit" id="submitButton" style="border: none; background: none; padding: 0;">
                     <img src="/img/excluir.png" alt="Deletar" />

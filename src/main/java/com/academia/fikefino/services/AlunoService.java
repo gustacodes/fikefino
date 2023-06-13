@@ -6,6 +6,7 @@ import com.academia.fikefino.enums.Beneficios;
 import com.academia.fikefino.enums.Mensalidade;
 import com.academia.fikefino.repositories.AlunoRepository;
 import com.academia.fikefino.repositories.PlanosRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -69,5 +70,14 @@ public class AlunoService {
 
     public void deleteById(Long id) {
         alunoRepository.deleteById(id);
+    }
+
+    public Aluno update(Long id, Aluno aluno) {
+        Optional<Aluno> al = alunoRepository.findById(id);
+        var alunoAtualizado = new Aluno();
+        BeanUtils.copyProperties(al, alunoAtualizado);
+        alunoAtualizado.setId(al.get().getId());
+        alunoRepository.save(alunoAtualizado);
+        return alunoAtualizado;
     }
 }

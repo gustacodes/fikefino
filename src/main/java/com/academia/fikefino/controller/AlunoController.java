@@ -58,15 +58,10 @@ public class AlunoController {
         return new RedirectView("/aluno/todos-alunos");
     }
 
-    /*@PutMapping("/{id}")
-    public ResponseEntity<Aluno> update(@PathVariable Long id, @RequestBody Aluno aluno) {
+    @PutMapping("/{id}")
+    public RedirectView update(@PathVariable Long id, Aluno aluno) {
         Aluno updateAluno = alunoService.update(id, aluno);
-        return ResponseEntity.status(HttpStatus.OK).body(updateAluno);
+        return new RedirectView("/aluno/todos-alunos");
     }
-
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody Aluno aluno) {
-        return ResponseEntity.status(HttpStatus.OK).body(alunoService.login(aluno).getBody());
-    }*/
 
 }
