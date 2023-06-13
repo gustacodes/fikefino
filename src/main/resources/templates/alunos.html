@@ -20,10 +20,10 @@
             <th>CPF</th>
             <th>USERNAME</th>
             <th>DATA DE NASCIMENTO</th>
-            <th>SENHA</th>
             <th>PLANO</th>
             <th>MENSALIDADE</th>
             <th>BENEFÍCIO</th>
+            <th colspan="3">AÇÕES</th>
         </tr>
         </thead>
         <tbody>
@@ -33,18 +33,21 @@
             <td>[[${aluno.cpf}]]</td>
             <td>[[${aluno.usarname}]]</td>
             <td>[[${aluno.dataNascimento}]]</td>
-            <td>[[${aluno.senha}]]</td>
             <td>[[${aluno.meuPlano}]]</td>
             <td>R$ [[${aluno.mensalidade}]]</td>
             <td>[[${aluno.beneficios}]]</td>
-            <td colspan="2">
-            <td><form th:action="@{/aluno/{id}(id=${aluno.id})}" th:method="delete">
+
+            <td>
+
+                <td>
+            <form th:action="@{/aluno/{id}(id=${aluno.id})}" th:method="delete">
                 <input type="hidden" name="_method" value="delete" />
                 <button type="submit" id="submitButton" style="border: none; background: none; padding: 0;">
                     <img src="/img/deletar-conta.png" alt="Deletar" />
                 </button>
             </form>
             </td>
+
             <td>
                 <form th:action="@{/aluno/{id}(id=${aluno.id})}" th:method="put" th:object="${aluno}">
                     <input type="hidden" name="_method" value="put" />
@@ -56,12 +59,11 @@
 
             </td>
 
-
         </tr>
 
         </tbody>
     </table>
-    <form th:action="@{/aluno}" th:method="get">
+    <form th:action="@{/aluno/cadastro}" th:method="get">
         <button type="submit">Cadastrar</button>
     </form>
 </div>

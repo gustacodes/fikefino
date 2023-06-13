@@ -32,8 +32,6 @@ public class Aluno {
     @Email
     private String email;
     @NotBlank
-    private String senha;
-    @NotBlank
     private String usarname;
     @NotBlank
     private String cpf;

@@ -40,7 +40,7 @@ public class WebConfig {
             .and()
             .formLogin()
             .loginPage("/admin/login")
-            .defaultSuccessUrl("/aluno/todos-alunos")
+            .defaultSuccessUrl("/aluno")
             .permitAll();
 
         return http.build();

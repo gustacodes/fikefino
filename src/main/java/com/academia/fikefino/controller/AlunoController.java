@@ -7,6 +7,7 @@ import com.academia.fikefino.enums.Mensalidade;
 import com.academia.fikefino.repositories.PlanosRepository;
 import com.academia.fikefino.services.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,7 @@ public class AlunoController {
     @Autowired
     private PlanosRepository planosRepository;
 
-    @GetMapping("/todos-alunos")
+    @GetMapping
     public ModelAndView findAll() {
         ModelAndView mv = new ModelAndView("alunos");
         List<Aluno> aluno = alunoService.findAll();
@@ -35,8 +36,8 @@ public class AlunoController {
         return mv;
     }
 
-    @GetMapping
-    public ModelAndView save() {
+    @GetMapping("/cadastro")
+    public ModelAndView cadastro() {
         ModelAndView mv = new ModelAndView("cadastro");
         return mv;
     }
@@ -49,19 +50,20 @@ public class AlunoController {
         planosRepository.save(meuPlano);
         Aluno plano = alunoService.tipoPlano(opcaoSelecionada, meuPlano.getId(), aluno);
 
-        return new RedirectView("/aluno/todos-alunos");
+        return new RedirectView("/aluno");
     }
 
     @DeleteMapping("/{id}")
     public RedirectView deleteById(@PathVariable Long id) {
         alunoService.deleteById(id);
-        return new RedirectView("/aluno/todos-alunos");
+        return new RedirectView("/aluno");
     }
 
     @PutMapping("/{id}")
     public RedirectView update(@PathVariable Long id, Aluno aluno) {
+
         Aluno updateAluno = alunoService.update(id, aluno);
-        return new RedirectView("/aluno/todos-alunos");
+        return new RedirectView("/aluno/atualiza-aluno");
     }
 
 }
