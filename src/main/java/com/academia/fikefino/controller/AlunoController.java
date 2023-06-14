@@ -11,12 +11,14 @@ import org.springframework.boot.Banner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/aluno")
@@ -60,10 +62,12 @@ public class AlunoController {
     }
 
     @PutMapping("/{id}")
-    public RedirectView update(@PathVariable Long id, Aluno aluno) {
-
-        Aluno updateAluno = alunoService.update(id, aluno);
-        return new RedirectView("/aluno/atualiza-aluno");
+    public RedirectView update(@PathVariable Long id, @RequestParam("opcao") String opcaoSelecionada, Aluno aluno) {
+        var meuPlano = new Planos();
+        meuPlano.setPlano(opcaoSelecionada);
+        planosRepository.save(meuPlano);
+        Aluno plano = alunoService.tipoPlano(opcaoSelecionada, meuPlano.getId(), aluno);
+        return new RedirectView("/aluno");
     }
 
 }

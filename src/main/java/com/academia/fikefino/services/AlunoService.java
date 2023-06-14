@@ -72,12 +72,8 @@ public class AlunoService {
         alunoRepository.deleteById(id);
     }
 
-    public Aluno update(Long id, Aluno aluno) {
-        Optional<Aluno> al = alunoRepository.findById(id);
-        var alunoAtualizado = new Aluno();
-        BeanUtils.copyProperties(al, alunoAtualizado);
-        alunoAtualizado.setId(al.get().getId());
-        alunoRepository.save(alunoAtualizado);
-        return alunoAtualizado;
+    public Optional<Aluno> findById(Long id) {
+        Optional<Aluno> aluno = alunoRepository.findById(id);
+        return aluno;
     }
 }

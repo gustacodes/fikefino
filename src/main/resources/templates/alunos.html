@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/alunos.css">
+    <link rel="stylesheet" href="/css/modal.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js" defer></script>
     <title>FikeFino - Alunos</title>
 
 </head>
@@ -38,7 +41,6 @@
             <td>[[${aluno.beneficios}]]</td>
 
             <td>
-
                 <td>
             <form th:action="@{/aluno/{id}(id=${aluno.id})}" th:method="delete">
                 <input type="hidden" name="_method" value="delete" />
@@ -49,16 +51,62 @@
             </td>
 
             <td>
-                <form th:action="@{/aluno/{id}(id=${aluno.id})}" th:method="put" th:object="${aluno}">
-                    <input type="hidden" name="_method" value="put" />
-                    <button type="submit" id="submitButton" style="border: none; background: none; padding: 0;">
+                <form th:action="@{/aluno/{id}(id=${aluno.id})}" th:method="put">
+                    <input type="hidden" name="_method" value="put"/>
+                    <button id="open-modal" type="button" style="border: none; background: none; padding: 0;">
                         <img src="/img/em-processamento.png" alt="Atualizar" />
                     </button>
+
+                <div id="fade" class="hide"></div>
+                <div id="modal" class="hide">
+                    <div class="modal-header">
+                        <h2>Aluno: </h2>[[${aluno.nome}]]
+                        <button id="close-modal" style="border: none; background: none; padding: 0;">
+                            <img src="/img/sair.png">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div>
+                            <input class="inputs required" name="nome" type="text" id="nome" th:value="${aluno.nome}">
+                        </div>
+                        <div>
+                            <input class="inputs required" name="email" type="text" id="email" th:value="${aluno.email}">
+                            <span class="span-required">Digite um email válido</span>
+                        </div>
+                        <div>
+                            <input class="inputs required" name="cpf" type="text" id="cpf" th:value="${aluno.cpf}">
+                            <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
+                        </div>
+                        <div>
+                            <input class="inputs required" name="usarname" type="text" id="usarname" th:value="${aluno.usarname}">
+                            <span class="span-required">Digite um email válido</span>
+                        </div>
+                        <div>
+                            <input class="inputs required" name="dataNascimento" type="date" id="dataNascimento" th:value="${aluno.dataNascimento}">
+                            <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
+                        </div><br>
+                        <p>Plano:</p>
+                        <div class="box-select">
+                            <div>
+                                <input type="radio" id="m" value="DIAMANTE" name="opcao">
+                                <label for="m">DIAMANTE</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="f" value="OURO" name="opcao">
+                                <label for="f">OURO</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="o" value="PRATA" name="opcao">
+                                <label for="o">PRATA</label>
+                            </div>
+                        </div><br>
+
+                        <button type="submit">Atualizar</button>
+                    </div>
+                </div>
                 </form>
             </td>
-
-            </td>
-
         </tr>
 
         </tbody>
