@@ -45,29 +45,23 @@ public class UsuarioController {
     }
 
     @PostMapping("/cadastro")
-    public RedirectView save(@ModelAttribute("usuario") @Valid Usuario user, BindingResult result) {
+    public RedirectView save(Usuario user) {
 
-        if(result.hasErrors()) {
-            List<Papeis> papeis = papeisRespository.findAll();
-            ModelAndView mv = new ModelAndView("admin/admin");
-            mv.addObject("papeis", papeis);
-        }
-            user.setPass(encoder.encode(user.getPassword()));
-            usuarioService.save(user);
-            return new RedirectView("/admin/login");
+        List<Papeis> papeis = papeisRespository.findAll();
+        ModelAndView mv = new ModelAndView("admin/admin");
+        mv.addObject("papeis", papeis);
+        user.setPass(encoder.encode(user.getPassword()));
+        usuarioService.save(user);
+        return new RedirectView("/admin/login");
     }
 
     @GetMapping("/login")
-    public String login(Model m) {
-        m.addAttribute("usuario", new Usuario());
+    public String login() {
         return "admin/login";
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute("usuario") @Valid Usuario usuario, BindingResult result) {
-        if(result.hasErrors()) {
-            return "admin/login";
-        }
+    public String login(Usuario usuario) {
         return "redirect:/aluno";
     }
 

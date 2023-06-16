@@ -4,6 +4,7 @@ import com.academia.fikefino.entities.Aluno;
 import com.academia.fikefino.entities.Planos;
 import com.academia.fikefino.repositories.PlanosRepository;
 import com.academia.fikefino.services.AlunoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -25,9 +26,9 @@ public class AlunoController {
 
     @GetMapping
     public ModelAndView findAll() {
+        List<Aluno> alunos = alunoService.findAll();
         ModelAndView mv = new ModelAndView("aluno/alunos");
-        List<Aluno> aluno = alunoService.findAll();
-        mv.addObject("alunos", aluno);
+        mv.addObject("alunos", alunos);
         return mv;
     }
 
@@ -39,11 +40,7 @@ public class AlunoController {
     }
 
     @PostMapping
-    public RedirectView save(@RequestParam("opcao") String opcaoSelecionada, Aluno aluno, BindingResult result) {
-
-        if(result.hasErrors()) {
-            return new RedirectView("/aluno/cadastro");
-        }
+    public RedirectView save(@RequestParam("opcao") String opcaoSelecionada, Aluno aluno) {
 
         var meuPlano = new Planos();
         meuPlano.setPlano(opcaoSelecionada);
