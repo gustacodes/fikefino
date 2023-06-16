@@ -12,26 +12,25 @@
     <h1>Cadastre-se 🏋️‍♂️️</h1>
     <form th:action="@{/aluno}" id="form" th:method="post">
         <div>
-            <input name="nome" type="text" placeholder="Digite seu nome" class="inputs required" oninput="nameValidate()">
-            <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
-        </div>
-        <div>
-            <input name="email" type="email" placeholder="Digite seu email" class="inputs required" oninput="emailValidate()">
-            <span class="span-required">Digite um email válido</span>
-        </div>
-        <div>
-            <input name="cpf" type="text" placeholder="Digite seu CPF" class="inputs required" oninput="nameValidate()">
-            <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
-        </div>
-        <div>
-            <input name="usarname" type="text" placeholder="Digite seu nome de usuário" class="inputs required" oninput="emailValidate()">
-            <span class="span-required">Digite um email válido</span>
-        </div>
-        <div>
-            <input name="dataNascimento" type="date" placeholder="Digite seu nome" class="inputs required" oninput="nameValidate()">
-            <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
-        </div>
+            <input name="nome" type="text" placeholder="Digite seu nome" class="inputs required">
 
+        </div>
+        <div>
+            <input name="email" type="email" placeholder="Digite seu email" class="inputs required" >
+
+        </div>
+        <div>
+            <input name="cpf" type="text" placeholder="Digite seu CPF" class="inputs required" >
+
+        </div>
+        <div>
+            <input name="username" type="text" placeholder="Digite seu nome de usuário" class="inputs required" >
+
+        </div>
+        <div>
+            <input name="dataNascimento" type="date" placeholder="Digite seu nome" class="inputs required">
+
+        </div>
 
         <p>Plano:</p>
         <div class="box-select">

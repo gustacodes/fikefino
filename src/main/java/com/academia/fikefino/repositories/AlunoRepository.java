@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AlunoRepository extends JpaRepository<Aluno, Long> {
-    Aluno findByUsarname(String usarname);
+    Aluno findByUsername(String username);
 }

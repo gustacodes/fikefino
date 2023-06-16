@@ -1,11 +1,10 @@
 package com.academia.fikefino.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,9 +13,6 @@ import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "tb_aluno")
@@ -35,11 +31,12 @@ public class Aluno {
     @Email(message = "E-mail inválido")
     private String email;
     @NotEmpty(message = "Campo usuario obrigatório")
-    private String usarname;
+    private String username;
     @NotEmpty(message = "Campo CPF obrigatório")
     @CPF
     private String cpf;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Past
     private LocalDate dataNascimento;
     @ManyToOne
     @JoinColumn(name = "plano_id")

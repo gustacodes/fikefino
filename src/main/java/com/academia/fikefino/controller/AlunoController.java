@@ -6,12 +6,14 @@ import com.academia.fikefino.enums.Beneficios;
 import com.academia.fikefino.enums.Mensalidade;
 import com.academia.fikefino.repositories.PlanosRepository;
 import com.academia.fikefino.services.AlunoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -46,7 +48,11 @@ public class AlunoController {
     }
 
     @PostMapping
-    public RedirectView save(@RequestParam("opcao") String opcaoSelecionada, Aluno aluno) {
+    public RedirectView save(@RequestParam("opcao") String opcaoSelecionada, Aluno aluno, BindingResult result) {
+
+        if(result.hasErrors()) {
+            return new RedirectView("/aluno/cadastro");
+        }
 
         var meuPlano = new Planos();
         meuPlano.setPlano(opcaoSelecionada);
