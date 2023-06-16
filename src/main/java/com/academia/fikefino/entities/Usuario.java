@@ -3,6 +3,8 @@ package com.academia.fikefino.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,9 +22,11 @@ public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
-    private String user;
-    @NotBlank
+    @NotEmpty(message = "Campo e-mail obrigatório")
+    @Email(message = "E-mail inválido")
+    private String email;
+    @NotEmpty(message = "Campo senha obrigatório")
+    @Size(min = 8, message = "A senha tem no mínimo 8 caractéres")
     private String pass;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable
@@ -40,7 +44,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user;
+        return email;
     }
 
     @Override

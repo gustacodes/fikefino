@@ -13,13 +13,13 @@
     <form th:action="@{/admin/login}" id="form" th:method="post" th:object="${usuario}">
         <div>
             <img src="/img/email.png">
-            <input name="username" type="text" placeholder="Usuário" class="inputs required">
-            <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
+            <input name="username" type="email" placeholder="usuário" th:field="*{username}" class="inputs required">
+            <div class="erro" th:errors="*{username}">E-mail inválido</div>
         </div>
         <div>
             <img class="pass" src="/img/senha.png">
-            <input name="password" type="password" placeholder="Senha" class="inputs required" >
-            <span class="span-required">Digite um email válido</span>
+            <input name="password" type="password" placeholder="senha" class="inputs required" >
+            <div class="erro" th:errors="*{password}">Senha inválida</div>
         </div>
 
         <button type="submit">Logar</button>

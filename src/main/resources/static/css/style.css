@@ -7,6 +7,13 @@
     --color-purple2: indigo;
 }
 
+.ace {
+    width: 70px;
+    height: 70px;
+    display: block;
+    margin: 0 auto;
+}
+
   table {
     width: 100%;
     border-collapse: collapse;
@@ -58,6 +65,13 @@ h1{
     text-align: center;
 }
 
+h2{
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 18px;
+    color: #FF4040;
+}
+
 .content form{
     display: flex;
     flex-direction: column;
@@ -105,6 +119,8 @@ button[type="submit"]{
     color: var(--color-white);
     cursor: pointer;
     transition: .3s;
+    display: block;
+    margin: 0 auto;
 }
 
 button[type="submit"]:hover{

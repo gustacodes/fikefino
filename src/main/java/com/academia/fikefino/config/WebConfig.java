@@ -38,7 +38,13 @@ public class WebConfig {
             .formLogin()
             .loginPage("/admin/login")
             .defaultSuccessUrl("/aluno")
-            .permitAll();
+            .permitAll()
+            .and()
+            .exceptionHandling()
+            .accessDeniedHandler((request, response, accessDeniedException) -> {
+            response.sendRedirect("/admin/acesso-negado");
+        });
+
 
         return http.build();
     }

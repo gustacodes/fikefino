@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -34,6 +35,7 @@ public class Aluno {
     @NotBlank
     private String usarname;
     @NotBlank
+    @CPF
     private String cpf;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
