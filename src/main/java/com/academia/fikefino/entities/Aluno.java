@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,13 +29,14 @@ public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
+    @NotEmpty(message = "Campo nome obrigatório")
     private String nome;
-    @Email
+    @NotEmpty(message = "Campo e-mail obrigatório")
+    @Email(message = "E-mail inválido")
     private String email;
-    @NotBlank
+    @NotEmpty(message = "Campo usuario obrigatório")
     private String usarname;
-    @NotBlank
+    @NotEmpty(message = "Campo CPF obrigatório")
     @CPF
     private String cpf;
     @DateTimeFormat(pattern = "dd/MM/yyyy")

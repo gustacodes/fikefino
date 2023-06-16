@@ -32,7 +32,7 @@ public class AlunoController {
 
     @GetMapping
     public ModelAndView findAll() {
-        ModelAndView mv = new ModelAndView("alunos");
+        ModelAndView mv = new ModelAndView("aluno/alunos");
         List<Aluno> aluno = alunoService.findAll();
         mv.addObject("alunos", aluno);
         return mv;
@@ -40,7 +40,8 @@ public class AlunoController {
 
     @GetMapping("/cadastro")
     public ModelAndView cadastro() {
-        ModelAndView mv = new ModelAndView("cadastro");
+        ModelAndView mv = new ModelAndView("aluno/cadastro");
+        mv.addObject("aluno", new Aluno());
         return mv;
     }
 

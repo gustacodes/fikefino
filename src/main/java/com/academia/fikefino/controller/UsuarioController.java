@@ -33,13 +33,13 @@ public class UsuarioController {
 
     @GetMapping("/acesso-negado")
     public String negado() {
-        return "acesso-negado";
+        return "admin/acesso-negado";
     }
 
     @GetMapping("/cadastro")
     public ModelAndView admin() {
         Iterable<Papeis> papeis = papeisRespository.findAll();
-        ModelAndView mv = new ModelAndView("admin");
+        ModelAndView mv = new ModelAndView("admin/admin");
         mv.addObject("papeis", papeis);
         return mv;
     }
@@ -49,7 +49,7 @@ public class UsuarioController {
 
         if(result.hasErrors()) {
             List<Papeis> papeis = papeisRespository.findAll();
-            ModelAndView mv = new ModelAndView("admin");
+            ModelAndView mv = new ModelAndView("admin/admin");
             mv.addObject("papeis", papeis);
         }
             user.setPass(encoder.encode(user.getPassword()));
@@ -60,13 +60,13 @@ public class UsuarioController {
     @GetMapping("/login")
     public String login(Model m) {
         m.addAttribute("usuario", new Usuario());
-        return "login";
+        return "admin/login";
     }
 
     @PostMapping("/login")
     public String login(@ModelAttribute("usuario") @Valid Usuario usuario, BindingResult result) {
         if(result.hasErrors()) {
-            return "login";
+            return "admin/login";
         }
         return "redirect:/aluno";
     }
@@ -74,7 +74,7 @@ public class UsuarioController {
     @GetMapping("/funcionarios")
     public ModelAndView findAll() {
         Iterable<Usuario> usuarios = usuarioService.findAll();
-        ModelAndView mv = new ModelAndView("funcionarios");
+        ModelAndView mv = new ModelAndView("admin/funcionarios");
         mv.addObject("usuarios", usuarios);
         return mv;
     }
