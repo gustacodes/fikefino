@@ -44,11 +44,11 @@ public class WebConfig {
             .accessDeniedHandler((request, response, accessDeniedException) -> {
             response.sendRedirect("/admin/acesso-negado");
         })
-                .and()
-                .logout()
-                .logoutUrl("/admin//logout")
-                .logoutSuccessUrl("/admin/login")
-                .permitAll();
+        .and()
+        .logout()
+        .logoutUrl("/admin//logout")
+        .logoutSuccessUrl("/admin/login")
+        .permitAll();
 
 
         return http.build();

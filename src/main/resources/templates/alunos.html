@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/alunos.css">
     <link rel="stylesheet" href="/css/modal.css">
-    <link rel="stylesheet" href="/css/style.css">
     <script src="/js/script.js"></script>
     <title>FikeFino - Alunos</title>
 
@@ -71,22 +70,23 @@
                             <div>
                                 <input class="inputs required" name="nome" type="text" id="nome" th:value="${aluno.nome}">
                             </div>
+
                             <div>
                                 <input class="inputs required" name="email" type="text" id="email" th:value="${aluno.email}">
-                                <span class="span-required">Digite um email válido</span>
                             </div>
+
                             <div>
                                 <input class="inputs required" name="cpf" type="text" id="cpf" th:value="${aluno.cpf}">
-                                <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
                             </div>
+
                             <div>
                                 <input class="inputs required" name="username" type="text" id="username" th:value="${aluno.username}">
-                                <span class="span-required">Digite um email válido</span>
                             </div>
+
                             <div>
                                 <input class="inputs required" name="dataNascimento" type="date" id="dataNascimento" th:value="${aluno.dataNascimento}">
-                                <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
                             </div><br>
+
                             <p>Plano:</p>
                             <div class="box-select">
                                 <div>
@@ -108,6 +108,7 @@
                     </div>
                 </form>
             </td>
+        </td>
 
         </tr>
 
