@@ -62,7 +62,7 @@ public class UsuarioController {
         mv.addObject("papeis", papeis);
         user.setPass(encoder.encode(user.getPassword()));
         usuarioService.save(user);
-        return new RedirectView("/login");
+        return new RedirectView("/admin/login");
     }
 
     @GetMapping("/login")
