@@ -25,14 +25,14 @@ public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty(message = "Campo nome obrigatório")
+    @NotBlank
     private String nome;
-    @NotEmpty(message = "Campo e-mail obrigatório")
-    @Email(message = "E-mail inválido")
+    @NotEmpty
+    @Email
     private String email;
-    @NotEmpty(message = "Campo usuario obrigatório")
+    @NotEmpty
     private String username;
-    @NotEmpty(message = "Campo CPF obrigatório")
+    @NotEmpty
     @CPF
     private String cpf;
     @DateTimeFormat(pattern = "dd/MM/yyyy")

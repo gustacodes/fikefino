@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/aluno")
+@Validated
 public class AlunoController {
 
     @Autowired
@@ -39,15 +41,22 @@ public class AlunoController {
         return mv;
     }
 
-    @PostMapping
-    public RedirectView save(@RequestParam("opcao") String opcaoSelecionada, Aluno aluno) {
+    @PostMapping("/cadastro")
+    public String save(Aluno aluno, @RequestParam("opcao") String opcaoSelecionada, BindingResult result) {
 
-        var meuPlano = new Planos();
-        meuPlano.setPlano(opcaoSelecionada);
-        planosRepository.save(meuPlano);
-        Aluno plano = alunoService.tipoPlano(opcaoSelecionada, meuPlano.getId(), aluno);
+        if(result.hasErrors()){
+            ModelAndView mv = new ModelAndView("cadastro");
+            mv.addObject("aluno", aluno);
+            return "/aluno/cadastro";
+        }
+            var meuPlano = new Planos();
+            meuPlano.setPlano(opcaoSelecionada);
+            planosRepository.save(meuPlano);
+            Aluno plano = alunoService.tipoPlano(opcaoSelecionada, meuPlano.getId(), aluno);
 
-        return new RedirectView("/aluno");
+            return "redirect:/aluno";
+
+
     }
 
     @DeleteMapping("/{id}")

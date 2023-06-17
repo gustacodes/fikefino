@@ -10,7 +10,7 @@
 <body>
 <div class="content">
     <h1>Cadastre-se 🏋️‍♂️️</h1>
-    <form th:action="@{/aluno}" id="form" th:method="post">
+    <form th:action="@{/aluno/cadastro}" id="form" th:method="post" th:object="${aluno}">
         <div>
             <input name="nome" type="text" placeholder="Digite seu nome" class="inputs required">
 
@@ -25,7 +25,7 @@
         </div>
         <div>
             <input name="username" type="text" placeholder="Digite seu nome de usuário" class="inputs required" >
-
+            <span th:errors="*{username}">Username obrigatório</span>
         </div>
         <div>
             <input name="dataNascimento" type="date" placeholder="Digite seu nome" class="inputs required">
