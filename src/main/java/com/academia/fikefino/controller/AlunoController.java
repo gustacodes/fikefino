@@ -27,14 +27,14 @@ public class AlunoController {
     @GetMapping
     public ModelAndView findAll() {
         List<Aluno> alunos = alunoService.findAll();
-        ModelAndView mv = new ModelAndView("aluno/alunos");
+        ModelAndView mv = new ModelAndView("alunos");
         mv.addObject("alunos", alunos);
         return mv;
     }
 
     @GetMapping("/cadastro")
     public ModelAndView cadastro() {
-        ModelAndView mv = new ModelAndView("aluno/cadastro");
+        ModelAndView mv = new ModelAndView("cadastro");
         mv.addObject("aluno", new Aluno());
         return mv;
     }

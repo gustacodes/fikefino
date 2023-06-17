@@ -39,7 +39,7 @@ public class UsuarioController {
     @GetMapping("/cadastro")
     public ModelAndView admin() {
         Iterable<Papeis> papeis = papeisRespository.findAll();
-        ModelAndView mv = new ModelAndView("admin/admin");
+        ModelAndView mv = new ModelAndView("admin");
         mv.addObject("papeis", papeis);
         return mv;
     }
@@ -48,16 +48,16 @@ public class UsuarioController {
     public RedirectView save(Usuario user) {
 
         List<Papeis> papeis = papeisRespository.findAll();
-        ModelAndView mv = new ModelAndView("admin/admin");
+        ModelAndView mv = new ModelAndView("admin");
         mv.addObject("papeis", papeis);
         user.setPass(encoder.encode(user.getPassword()));
         usuarioService.save(user);
-        return new RedirectView("/admin/login");
+        return new RedirectView("/login");
     }
 
     @GetMapping("/login")
     public String login() {
-        return "admin/login";
+        return "login";
     }
 
     @PostMapping("/login")
@@ -68,7 +68,7 @@ public class UsuarioController {
     @GetMapping("/funcionarios")
     public ModelAndView findAll() {
         Iterable<Usuario> usuarios = usuarioService.findAll();
-        ModelAndView mv = new ModelAndView("admin/funcionarios");
+        ModelAndView mv = new ModelAndView("funcionarios");
         mv.addObject("usuarios", usuarios);
         return mv;
     }
