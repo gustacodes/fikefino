@@ -4,6 +4,9 @@ import com.academia.fikefino.entities.Papeis;
 import com.academia.fikefino.entities.Usuario;
 import com.academia.fikefino.repositories.PapeisRespository;
 import com.academia.fikefino.services.UsuarioService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,7 +36,14 @@ public class UsuarioController {
 
     @GetMapping("/acesso-negado")
     public String negado() {
-        return "admin/acesso-negado";
+        return "acesso-negado";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        session.invalidate();
+
+        return "redirect:/admin/login";
     }
 
     @GetMapping("/cadastro")
