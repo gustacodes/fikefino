@@ -40,10 +40,10 @@ public class UsuarioController {
     }
 
     @GetMapping("/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+    public RedirectView logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
         session.invalidate();
 
-        return "redirect:/admin/login";
+        return new RedirectView("/admin/login");
     }
 
     @GetMapping("/cadastro")
@@ -66,13 +66,14 @@ public class UsuarioController {
     }
 
     @GetMapping("/login")
-    public String login() {
-        return "login";
+    public ModelAndView login() {
+        ModelAndView mv = new ModelAndView("login");
+        return mv;
     }
 
     @PostMapping("/login")
-    public String login(Usuario usuario) {
-        return "redirect:/aluno";
+    public RedirectView login(Usuario usuario) {
+        return new RedirectView("/aluno");
     }
 
     @GetMapping("/funcionarios")

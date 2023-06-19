@@ -42,19 +42,19 @@ public class AlunoController {
     }
 
     @PostMapping("/cadastro")
-    public String save(Aluno aluno, @RequestParam("opcao") String opcaoSelecionada, BindingResult result) {
+    public RedirectView save(Aluno aluno, @RequestParam("opcao") String opcaoSelecionada, BindingResult result) {
 
         if(result.hasErrors()){
             ModelAndView mv = new ModelAndView("cadastro");
             mv.addObject("aluno", aluno);
-            return "/aluno/cadastro";
+            return new RedirectView("/aluno");
         }
             var meuPlano = new Planos();
             meuPlano.setPlano(opcaoSelecionada);
             planosRepository.save(meuPlano);
             Aluno plano = alunoService.tipoPlano(opcaoSelecionada, meuPlano.getId(), aluno);
 
-            return "redirect:/aluno";
+            return new RedirectView("/aluno");
 
 
     }
